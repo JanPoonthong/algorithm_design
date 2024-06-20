@@ -17,4 +17,5 @@ def kadane(user_input):
         return 0
     return max_global
 
+
 print(kadane(user_input))

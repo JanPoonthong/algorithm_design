@@ -6,11 +6,16 @@ x = [0] * n
 
 def combination(i):
     if i == n:
-        print(x)
+        if sum(x) == k:
+            return 1
+        else:
+            return 0
     else:
-        for a in [0, 1, 2]:
-            x[i] = a
-            combination(i+1)
+        x[i] = 0
+        s = combination(i + 1)
+        x[i] = 1
+        s += combination(i + 1)
+        return s
 
 
 print(combination(0))

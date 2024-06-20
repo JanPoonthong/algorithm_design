@@ -8,9 +8,10 @@ def f(x):
         print("done")
         return 1
     else:
-        y = f(x-1)+1
+        y = f(x - 1) + 1
         print(y)
         return y
+
 
 # x = int(input())
 print(f(5))
