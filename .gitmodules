@@ -1,0 +1,3 @@
+[submodule "Algorithm-Design"]
+	path = Algorithm-Design
+	url = git@github.com:LynnT-2003/Algorithm-Design.git
