@@ -4,7 +4,7 @@ k = int(input())
 x = [0] * n
 
 
-def combination(i):
+def combination(i, count_ones):
     if i == n:
         if sum(x) == k:
             return 1
