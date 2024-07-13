@@ -1,0 +1,3 @@
+Number_of_items(N) Max_capacity(M)
+weight_0 weight_1 . . . weight_N-1
+value_0  value_1  . . . value_N-1
