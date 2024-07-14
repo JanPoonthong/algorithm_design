@@ -1,10 +1,14 @@
 def minimum_coin_change():
     coin_denominator = sorted([1, 3, 4, 5], reverse=True)
-    amount_of_change = 7
+    amount_of_change = 14
     count = [0]
+    memo = {}
 
     def calculate(amount_of_change):
         count[0] += 1
+        if amount_of_change in memo:
+            return memo[amount_of_change]
+        
         if amount_of_change in coin_denominator:
             return 1
         
@@ -12,6 +16,7 @@ def minimum_coin_change():
         for c in coin_denominator:
             if c <= amount_of_change:
                 minimum_coin_need = min(minimum_coin_need, calculate(amount_of_change-c) + 1)
+        memo[amount_of_change] = minimum_coin_need
         return minimum_coin_need
     
     result = calculate(amount_of_change)
