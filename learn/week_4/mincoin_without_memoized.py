@@ -1,8 +1,11 @@
+import sys
+
+sys.setrecursionlimit(100000)
+
 def minimum_coin_change():
     coin_denominator = sorted([1, 3, 4, 5], reverse=True)
-    amount_of_change = 14
+    amount_of_change = 7
     count = [0]
-    memo = {}
 
     def calculate(amount_of_change):
         count[0] += 1
