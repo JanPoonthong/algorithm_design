@@ -9,8 +9,11 @@ values = list(map(int, input().split()))
 
 def knap_sack():
     x = [0] * length
+    count = [0]
 
     def calculate(i):
+        count[0] += 1
+
         if i == length:
             state_weight = state_value = 0
             for j in range(length):
@@ -28,7 +31,9 @@ def knap_sack():
             b = calculate(i + 1)
             return max(a, b)
 
-    return calculate(0)
+    result = calculate(0)
+    print(f"Number of recursive calls: {count}")
+    return result
 
 
 print(knap_sack())

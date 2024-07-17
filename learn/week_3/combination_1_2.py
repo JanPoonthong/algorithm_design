@@ -3,9 +3,9 @@ def com(i):
         print(my_list)
         return
     my_list[i] = 0
-    com(i+1)
+    com(i + 1)
     my_list[i] = 1
-    com(i+1)
+    com(i + 1)
 
 
 input_in = 2

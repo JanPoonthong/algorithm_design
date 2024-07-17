@@ -1,5 +1,6 @@
 "setrecursionlimit"
 import sys
+
 sys.setrecursionlimit(10000)
 
 INPUT_IN = 2
@@ -16,7 +17,7 @@ def com(i):
     count = 0
     for j in [0, 1, 2]:
         my_list[i] = j
-        count += com(i+1)
+        count += com(i + 1)
     return count
 
 
