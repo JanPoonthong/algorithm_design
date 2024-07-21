@@ -1,10 +1,12 @@
 import sys
+
 sys.setrecursionlimit(10000)
+
 
 def min_coin():
     coin_denominator = list(map(int, input().split()))
     amount_of_change = int(input())
-    dp = [[float('inf')] * (amount_of_change + 1) for _ in range(len(coin_denominator))]
+    dp = [[float("inf")] * (amount_of_change + 1) for _ in range(len(coin_denominator))]
 
     def calculate():
         for i in range(len(coin_denominator)):
@@ -18,5 +20,6 @@ def min_coin():
         return dp[len(coin_denominator) - 1][amount_of_change]
 
     return calculate()
+
 
 print(min_coin())

@@ -1,28 +1,33 @@
 import sys
+
 sys.setrecursionlimit(10000)
 
+
 def above_pel():
-    memo = {"male": 1, "female": 2}
-    # generation_above_pel = input()
-    generation_above_pel = 29
-    count_harvesters = [0]
+    memo = {}
+    generation_above_pel = int(input())
+    count = [0]
 
     def calculate(i, track):
+        if (i, track) in memo:
+            return memo[(i, track)]
+
         if i == generation_above_pel:
-            count_harvesters[0] += 1
-            return
+            if track == "male":
+                return 1
+            elif track == "female":
+                return 2
 
-        if track == "female":
-            count_harvesters[0] += 2
-            track = "male"
-        elif track == "male":
-            # count_harvesters[0] += 1
-            track = "female"
+        if track == "male":
+            count[0] = calculate(i + 1, "female")
+        elif track == "female":
+            count[0] = calculate(i + 1, "male") + calculate(i + 1, "female")
 
-        return calculate(i+1, track)
+        memo[(i, track)] = count[0]
+        return count[0]
 
-    result = calculate(0, "male")
-    return count_harvesters[0]
+    result = calculate(1, "male")
+    return result
 
 
 print(above_pel())

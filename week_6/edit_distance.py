@@ -1,5 +1,7 @@
 import sys
+
 sys.setrecursionlimit(10000)
+
 
 def edit_distance():
     first_word = input().rstrip()
@@ -20,13 +22,15 @@ def edit_distance():
             return calculate(str_one, str_two, i + 1, j + 1)
 
         # If characters are different, consider all three operations
-        return 1 + min(calculate(str_one, str_two, i, j + 1),    # Insert
-                       calculate(str_one, str_two, i + 1, j),    # Remove
-                       calculate(str_one, str_two, i + 1, j + 1) # Replace
-                       )
+        return 1 + min(
+            calculate(str_one, str_two, i, j + 1),  # Insert
+            calculate(str_one, str_two, i + 1, j),  # Remove
+            calculate(str_one, str_two, i + 1, j + 1),  # Replace
+        )
 
     result = calculate(first_word, second_word, 0, 0)
     print(f"Number of recursive calls: {count}")
     return result
+
 
 print(edit_distance())

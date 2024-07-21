@@ -1,5 +1,7 @@
 import sys
+
 sys.setrecursionlimit(10000)
+
 
 def dynamic_edit_distance():
     first_word = input().rstrip()
@@ -14,12 +16,12 @@ def dynamic_edit_distance():
                 elif j == 0:
                     dynamic[i][j] = i
                 else:
-                    if first_word[i-1] == second_word[j-1]:
-                        dynamic[i][j] = dynamic[i-1][j-1]
+                    if first_word[i - 1] == second_word[j - 1]:
+                        dynamic[i][j] = dynamic[i - 1][j - 1]
                     else:
-                        replace = 1 + dynamic[i-1][j-1]
-                        delete = 1 + dynamic[i-1][j]
-                        insert = 1 + dynamic[i][j-1]
+                        replace = 1 + dynamic[i - 1][j - 1]
+                        delete = 1 + dynamic[i - 1][j]
+                        insert = 1 + dynamic[i][j - 1]
                         dynamic[i][j] = min(replace, delete, insert)
         return dynamic[len(dynamic) - 1][len(dynamic[0]) - 1]
 
