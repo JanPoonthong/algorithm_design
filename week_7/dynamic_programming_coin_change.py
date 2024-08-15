@@ -9,7 +9,10 @@ def min_coin():
     coin_denominator = [1, 3, 4, 5]
     amount_of_change = 7
 
-    dp = [[float("inf")] * (amount_of_change + 1) for _ in range(len(coin_denominator))]
+    dp = [
+        [float("inf")] * (amount_of_change + 1)
+        for _ in range(len(coin_denominator))
+    ]
 
     def calculate():
         for i in range(len(coin_denominator)):

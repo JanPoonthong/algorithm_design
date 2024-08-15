@@ -15,7 +15,7 @@ memo = {}
 def nWays(d, s):
     if (d, s) in memo:
         return memo[(d, s)]
-    
+
     if d == L:
         if s == FLAT:
             memo[(d, s)] = 1

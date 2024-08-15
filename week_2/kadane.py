@@ -2,6 +2,7 @@ import time
 
 user_input = list(map(int, input().split()))
 
+
 # The find maximum profit in a list
 def kadane(user_input):
     max_global = float("-inf")

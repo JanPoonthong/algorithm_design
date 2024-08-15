@@ -15,7 +15,9 @@ def buying_apple():
             option2 = float("inf")
             if packets[index] != -1 and current_weight + index + 1 <= k:
                 option2 = brute_force(
-                    index, current_weight + index + 1, current_cost + packets[index]
+                    index,
+                    current_weight + index + 1,
+                    current_cost + packets[index],
                 )
 
             return min(option1, option2)

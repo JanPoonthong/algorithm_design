@@ -6,7 +6,9 @@ sys.setrecursionlimit(10000)
 def dynamic_edit_distance():
     first_word = input().rstrip()
     second_word = input().rstrip()
-    dynamic = [[None] * (len(second_word) + 1) for _ in range(len(first_word) + 1)]
+    dynamic = [
+        [None] * (len(second_word) + 1) for _ in range(len(first_word) + 1)
+    ]
 
     def calculate():
         for i in range(len(dynamic)):

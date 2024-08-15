@@ -7,7 +7,7 @@ UPPER2 = 1
 LOWER2 = 2
 
 L = int(input())
-# L = 4
+# L = 2
 
 
 def nWays(d, s):

@@ -7,10 +7,10 @@ UPPER2 = 1
 LOWER2 = 2
 
 L = int(input())
-dp = [[-1]*3 for d in range(L+1)]
+dp = [[-1] * 3 for d in range(L + 1)]
 
 
-# This is memorized version
+# This is dynamic programming version
 def nWays(d, s):
     if dp[d][s] == -1:
         if d == L:
