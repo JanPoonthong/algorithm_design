@@ -1,0 +1,4 @@
+#rows #columns
+start_row start_column
+destination_row destination_column
+The following are M rows of N integers depicting the maze. For each integer, 0 is walkable position, 1 is wall.
