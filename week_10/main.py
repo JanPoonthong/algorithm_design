@@ -1,3 +1,5 @@
+N = int(input())
+
 def conflict(Q, i, j):
     if Q[i] == Q[j] or abs(Q[i]-Q[j]) == abs(i-j):
         return True
@@ -32,7 +34,6 @@ def successor(s):
     return succ
 
 Queue = []
-N = int(input())
 s = state(N)
 while s.col < N:
     for u in successor(s):
