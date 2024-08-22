@@ -9,3 +9,6 @@ def getNoOfWays(n):
 # Driver Code
 print(getNoOfWays(3))
 print(getNoOfWays(4))
+
+
+# Wrong
