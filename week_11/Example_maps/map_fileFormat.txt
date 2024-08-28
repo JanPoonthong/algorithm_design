@@ -1,0 +1,5 @@
+- The file contain edge list. 
+
+- The first line indicates total number of vertices (cities) in the graph (map).
+
+- Each of the following line designates an edge (road) between a pair of vertices (cities). The first two numbers are the identifiers of the adjacent vertices. The third number is the weight (distance) of the edge.
