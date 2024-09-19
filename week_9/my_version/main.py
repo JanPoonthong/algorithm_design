@@ -1,14 +1,13 @@
 def getNoOfWays(n):
     # Base case
-    if n <= 2:
-        return n
+    if n < 4:
+        return 1
 
-    return getNoOfWays(n - 1) + getNoOfWays(n - 2)
+    return getNoOfWays(n - 1) + getNoOfWays(n - 4)
 
 
 # Driver Code
-print(getNoOfWays(3))
+print(getNoOfWays(7))
 print(getNoOfWays(4))
 
-
-# Wrong
+# https://youtu.be/EhjU_X7Src0

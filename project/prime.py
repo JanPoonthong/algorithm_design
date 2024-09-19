@@ -20,5 +20,5 @@ def prime_factors(n):
     return factors
 
 
-print(prime_factors(9))
+print(prime_factors(84))
 print(count)

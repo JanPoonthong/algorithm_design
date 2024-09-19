@@ -14,6 +14,7 @@ def count_divisors(num):
 def get_last_digit_of_divisors_count(nums):
     # Calculate the product of all integers
     product = reduce(lambda x, y: x * y, nums)
+    print(product)
     
     # Count the number of positive divisors of the product
     num_divisors = count_divisors(product)

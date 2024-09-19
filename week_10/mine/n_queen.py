@@ -1,3 +1,4 @@
+# Not the arjan way of doing
 N = int(input())
 
 def main(N):
