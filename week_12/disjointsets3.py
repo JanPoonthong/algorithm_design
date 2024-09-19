@@ -1,9 +1,8 @@
-
 class DisjointSets:
     def __init__(self, n):
         self.p = list(range(n))
-        self.rank = [0]*n
-        
+        self.rank = [0] * n
+
     def findset(self, u):
         if self.p[u] == u:
             return u
@@ -11,7 +10,7 @@ class DisjointSets:
             self.p[u] = self.findset(self.p[u])
             return self.p[u]
 
-    def union(self, u,v):
+    def union(self, u, v):
         a = self.findset(u)
         b = self.findset(v)
         if self.rank[a] < self.rank[b]:
@@ -21,7 +20,8 @@ class DisjointSets:
             if self.rank[a] == self.rank[b]:
                 self.rank[a] += 1
 
-'''
+
+"""
 # example
 
 djs = DisjointSets(5)
@@ -34,4 +34,4 @@ print(djs.findset(3), djs.findset(4))
 djs.union(4,1)
 print(djs.findset(4), djs.findset(1))
 
-'''
+"""

@@ -14,11 +14,15 @@ dest_row, dest_col = map(int, input().split())
 for r in range(rows):
     row_input = list(map(int, input().split()))  # Input row by row
     for c in range(cols):
-        maze[r][c] = -row_input[c]  # Negative value for walls (easier to distinguish)
+        maze[r][c] = -row_input[
+            c
+        ]  # Negative value for walls (easier to distinguish)
+
 
 # Function to check if the next position is valid to move into (inside bounds and not a wall)
 def is_valid_move(r, c):
     return 0 <= r < rows and 0 <= c < cols and maze[r][c] == 0
+
 
 # Define the state class which stores the current position (row, column) and the step count
 class State:
@@ -27,8 +31,10 @@ class State:
         self.col = column  # Current column
         self.steps = steps  # Steps taken to reach this point
 
+
 # Directions for moving up, right, down, and left (in that order)
 directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+
 
 # Function to generate valid successor states (next possible moves)
 def get_successors(current_state):
@@ -36,7 +42,7 @@ def get_successors(current_state):
     for direction in directions:
         new_row = current_state.row + direction[0]
         new_col = current_state.col + direction[1]
-        
+
         if is_valid_move(new_row, new_col):  # Check if the move is valid
             # Create a new state for the valid move
             new_state = copy.deepcopy(current_state)
@@ -49,12 +55,14 @@ def get_successors(current_state):
 
             # Add the new state to the list of successors
             successors.append(new_state)
-    
+
     return successors
+
 
 # Check if the current state has reached the destination
 def is_goal(current_state):
     return current_state.row == dest_row and current_state.col == dest_col
+
 
 # Initialize BFS
 queue = []
@@ -65,7 +73,9 @@ queue.append(start_state)
 while queue:
     current_state = queue.pop(0)  # Dequeue the first state
 
-    if is_goal(current_state):  # If the goal is reached, print the number of steps and exit
+    if is_goal(
+        current_state
+    ):  # If the goal is reached, print the number of steps and exit
         print(current_state.steps)
         break
 

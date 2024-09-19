@@ -11,6 +11,7 @@ def fast_power(base, exponent):
 
     return result
 
+
 # Example usage
 a = int(input("Enter the base: "))
 x = int(input("Enter the exponent: "))

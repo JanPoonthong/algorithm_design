@@ -1,10 +1,11 @@
 # Not the arjan way of doing
 N = int(input())
 
+
 def main(N):
     col = set()
-    posDiag = set() # (r-c)
-    negDiag = set() # (r+c)
+    posDiag = set()  # (r-c)
+    negDiag = set()  # (r+c)
 
     res = []
     board = [["."] * N for i in range(N)]

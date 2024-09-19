@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(20001)
 
 n = 9
@@ -9,20 +10,24 @@ for i in range(d):
 
 import copy
 
-def valid(i,j):
+
+def valid(i, j):
     global d
-    
+
     if i >= 0 and i < d and j >= 0 and j < d:
         return True
     else:
         return False
+
 
 class state:
     def __init__(self, p):
         self.p = copy.deepcopy(p)
         self.g = 0
 
-adj = [(0,-1),(0,1),(1,0),(-1,0)]
+
+adj = [(0, -1), (0, 1), (1, 0), (-1, 0)]
+
 
 def goal(s):
     for i in range(n):
@@ -30,27 +35,29 @@ def goal(s):
             return False
     return True
 
+
 def successor(s):
     global d
 
     succ = []
     for i in range(len(s.p)):
-            if s.p[i] == 0:
-                hole = i
-                break
-    r = hole//d
-    c = hole%d
+        if s.p[i] == 0:
+            hole = i
+            break
+    r = hole // d
+    c = hole % d
     for a in adj:
         i = r + a[0]
         j = c + a[1]
-        if valid(i,j):
-            target = i*d + j
+        if valid(i, j):
+            target = i * d + j
             m = s.p[:]
-            m[target],m[hole] = m[hole],m[target]
+            m[target], m[hole] = m[hole], m[target]
             u = state(m)
-            u.g = s.g+1
+            u.g = s.g + 1
             succ.append(u)
     return succ
+
 
 def DFS(s, maxDepth):
     global count
@@ -66,7 +73,7 @@ def DFS(s, maxDepth):
             if minstep != -1:
                 return minstep
         return -1
-        
+
 
 def IDS(s):  # Iterative Deepening Search
     # Complete this function (which utilizes DFS)
@@ -75,11 +82,10 @@ def IDS(s):  # Iterative Deepening Search
     while x == -1:
         limit += 1
         x = DFS(s, limit)
-    
+
     return x
 
-    
-          
+
 count = 0
 s = state(p)
 print(IDS(s))

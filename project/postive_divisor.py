@@ -1,6 +1,8 @@
 import math
 
 count = 0
+
+
 def find_divisors(n):
     global count
     divisors = set()  # Use a set to avoid duplicate divisors
@@ -10,6 +12,7 @@ def find_divisors(n):
             divisors.add(i)  # i is a divisor
             divisors.add(n // i)  # n // i is also a divisor
     return sorted(divisors)  # Return sorted list of divisors
+
 
 # Example usage
 number = 84

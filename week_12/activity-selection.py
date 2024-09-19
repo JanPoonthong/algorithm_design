@@ -1,10 +1,10 @@
-#Retrieve input value
+# Retrieve input value
 n = int(input())
 activities = []
 for _ in range(n):
     activities.append(list(map(int, input().split())))
 
-#Method 1
+# Method 1
 # Step 1: Sort activities by end time
 activities = sorted(activities, key=lambda x: x[1])
 print(activities)
@@ -22,11 +22,11 @@ for i in range(1, len(activities)):
 print("Selected activities:", selected_activities)
 
 
-#Method 2
+# Method 2
 busy = -1
 count = 0
 for act in activities:
     if act[0] > busy:
-        count+=1
+        count += 1
         busy = act[1]
 print(count)

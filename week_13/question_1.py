@@ -2,6 +2,7 @@ a = int(input())
 x = int(input())
 mod = 2147483647
 
+
 def compute_power(a, x):
     result = 1
     for _ in range(x):

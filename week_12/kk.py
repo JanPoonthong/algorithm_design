@@ -6,8 +6,10 @@ for _ in range(E):
     V1, V2, W = map(int, input().split())
     edges.append((V1, V2, W))
 
+
 def getKey(x):
     return x[2]
+
 
 edges.sort(key=getKey)
 print(edges)
@@ -27,8 +29,8 @@ for edge in edges:
 print(total_weight)
 
 
-#OR
-for v1,v2,w in edges:
+# OR
+for v1, v2, w in edges:
     # v1 = edge[0], v2 = edge[1], w = edge[2]
     if djs.findset(v1) != djs.findset(v2):
         total_weight += w

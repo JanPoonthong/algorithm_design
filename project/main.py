@@ -3,6 +3,7 @@ from collections import Counter
 
 numbers = [int(sys.stdin.readline().strip()) for _ in range(10)]
 
+
 def prime_factors(n):
     i = 2
     factors = Counter()
