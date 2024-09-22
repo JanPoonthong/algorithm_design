@@ -20,13 +20,14 @@ for i in range(1, len(activities)):
 
 # Output the selected activities
 print("Selected activities:", selected_activities)
+print("Count", len(selected_activities))
 
 
-# Method 2
-busy = -1
-count = 0
-for act in activities:
-    if act[0] > busy:
-        count += 1
-        busy = act[1]
-print(count)
+# # Method 2
+# busy = -1
+# count = 0
+# for act in activities:
+#     if act[0] > busy:
+#         count += 1
+#         busy = act[1]
+# print(count)
