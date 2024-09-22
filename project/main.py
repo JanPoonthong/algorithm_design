@@ -1,7 +1,7 @@
 import sys
 from collections import Counter
 
-numbers = [int(sys.stdin.readline().strip()) for _ in range(10)]
+numbers = [int(sys.stdin.readline().strip()) for _ in range(3)]
 
 
 def prime_factors(n):

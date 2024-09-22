@@ -42,4 +42,12 @@ def cityCompare(x, y):
 
 
 # Write UCS code below this line
+pq = Simple_Priority_Queue(cityCompare)
+s = state(0, 0)
+while s.city != V - 1:
+    for u in successor(s):
+        pq.enqueue(u)
+    s = pq.dequeue()
+
+
 print(s.d)
