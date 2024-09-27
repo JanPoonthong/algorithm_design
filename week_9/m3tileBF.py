@@ -20,9 +20,7 @@ def nWays(d, s):
         counter = 0
         if s == FLAT:
             counter += nWays(d + 1, UPPER2)
-            counter += nWays(
-                d + 1, LOWER2
-            )  # Actually, this is symmetric to UPPER2
+            counter += nWays(d + 1, LOWER2)  # Actually, this is symmetric to UPPER2
             if d < L - 1:
                 counter += nWays(d + 2, FLAT)
         else:  # s is either UPPER2 or LOWER2

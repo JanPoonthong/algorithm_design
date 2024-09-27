@@ -59,6 +59,8 @@ queue = []
 initial_state = BoardState(N)
 queue.append(initial_state)
 
+solution_state = None
+
 # BFS to find the solution
 while queue:
     current_state = queue.pop(0)  # Dequeue the next state
@@ -89,4 +91,8 @@ def print_queens(queens):
 
 
 # Print the solution
-print_queens(solution_state.queens)
+# Check if solution exists
+if solution_state:
+    print_queens(solution_state.queens)
+else:
+    print("No solution exists.")
