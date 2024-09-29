@@ -1,72 +1,103 @@
-import KnapsackBound
-
-# Define a class to represent an item with weight (w), value (v), and value-to-weight ratio (r)
+# Class to represent an item with weight, value, and value-to-weight ratio (r)
 class Item:
     def __init__(self, weight, value):
-        self.weight = weight  # Item's weight
-        self.value = value    # Item's value
-        self.ratio = value / weight  # Value-to-weight ratio
+        self.weight = weight
+        self.value = value
+        self.ratio = value / weight  # Value-to-weight ratio for sorting
 
-# Read the first line of input: N (number of items) and M (maximum weight capacity)
-N, M = map(int, input().split())
 
-# Read the weights and values of the items from input
-weights = list(map(int, input().split()))  # List of item weights
-values = list(map(int, input().split()))   # List of item values
+# Input for number of items (N) and knapsack capacity (M)
+inputs = input().split()
+N = int(inputs[0])  # Number of items
+M = int(inputs[1])  # Capacity of knapsack
 
-# Create a list of Item objects based on input weights and values
+# Input weights and values of the items
+weights = input().split()
+values = input().split()
+
+# Creating a list of Item objects
 items = []
 for i in range(N):
-    items.append(Item(weights[i], values[i]))
+    items.append(Item(int(weights[i]), int(values[i])))
 
-# Sort items in descending order based on value-to-weight ratio (greedy approach for fractional knapsack)
-items.sort(key=lambda item: item.ratio, reverse=True)
 
-# Initialize global variables:
-max_value = 0  # To track the maximum value found during DFS
-num_calls = 0  # To track the number of recursive DFS calls made
+# Function to get the sorting key, which is the value-to-weight ratio
+def get_ratio(item):
+    return item.ratio
 
-# Define the Depth-First Search (DFS) function
-def dfs(index, current_weight, current_value):
-    """
-    Perform DFS to explore different combinations of items to maximize value within weight capacity.
 
-    Parameters:
-    index: The current item index being considered
-    current_weight: The total weight of the selected items so far
-    current_value: The total value of the selected items so far
-    """
-    global max_value, items, N, M, num_calls
+# Sort items based on value-to-weight ratio in descending order
+items.sort(key=get_ratio, reverse=True)
 
-    # Increment the number of DFS calls (for analysis purposes)
-    num_calls += 1
 
-    # If the current weight exceeds the capacity, prune (stop exploring this path)
-    if current_weight > M:
-        return
+# Function to calculate the bound (upper bound on the max value we can achieve)
+# i: current item index, remaining_capacity: available capacity in the knapsack
+def calculate_bound(i, remaining_capacity):
+    total_weight = 0  # Accumulated weight
+    total_value = 0  # Accumulated value
+    current_index = i
+    fractional_part = 1.0  # Tracks whether the next item can be taken fully or fractionally
 
-    # Calculate an upper bound on the maximum value achievable from this point onwards
-    # Using fractional items with the remaining capacity
-    upper_bound = current_value + KnapsackBound.Bound(index, M - current_weight, items, N)
+    # Loop through the remaining items
+    while current_index < N and fractional_part == 1.0:
+        # Take as much of the current item as possible (fractional if needed)
+        available_weight = min(remaining_capacity - total_weight, items[current_index].weight)
+        fractional_part = float(available_weight) / items[current_index].weight
+        total_weight += fractional_part * items[current_index].weight
+        total_value += fractional_part * items[current_index].value
+        current_index += 1
 
-    # If the upper bound is worse than the current maximum value, prune this branch
-    if upper_bound <= max_value:
-        return
+    return total_value  # Return the estimated value (upper bound)
 
-    # If all items have been considered, update the maximum value if current weight is valid
-    if index == N:
-        if current_weight <= M:
-            max_value = max(max_value, current_value)
+
+# Global variables to track the maximum value found and the number of DFS calls
+max_value = 0
+call_count = 0
+
+
+# DFS (Depth-First Search) function to explore all item combinations
+# i: current item index, current_weight: current weight in knapsack, current_value: current value in knapsack
+def dfs(i, current_weight, current_value):
+    global max_value, items, N, M, call_count
+    if i == N:
+        # Base case: All items are considered, update max_value
+        max_value = max(max_value, current_value)
     else:
-        # Option 1: Skip the current item and move to the next
-        dfs(index + 1, current_weight, current_value)
+        call_count += 1  # Track the number of recursive calls
 
-        # Option 2: Take the current item (add its weight and value) and move to the next
-        dfs(index + 1, current_weight + items[index].weight, current_value + items[index].value)
+        # Calculate the bounds for taking and skipping the current item
+        bound_if_take = -1
+        if current_weight + items[i].weight <= M:
+            bound_if_take = (
+                current_value + items[i].value + calculate_bound(i + 1, M - current_weight - items[i].weight)
+            )
 
-# Start the DFS from the first item, with no initial weight or value
+        bound_if_skip = current_value + calculate_bound(i + 1, M - current_weight)
+
+        # Decide whether to take or skip the current item based on bounds
+        if bound_if_skip > bound_if_take:
+            if bound_if_skip > max_value:
+                dfs(i + 1, current_weight, current_value)  # Skip the item
+            if bound_if_take > max_value:
+                dfs(
+                    i + 1,
+                    current_weight + items[i].weight,
+                    current_value + items[i].value,
+                )  # Take the item
+        else:
+            if bound_if_take > max_value:
+                dfs(
+                    i + 1,
+                    current_weight + items[i].weight,
+                    current_value + items[i].value,
+                )  # Take the item
+            if bound_if_skip > max_value:
+                dfs(i + 1, current_weight, current_value)  # Skip the item
+
+
+# Start the DFS search
 dfs(0, 0, 0)
 
-# Output the results:
-print("Maximum value:", max_value)  # Maximum value that can be achieved without exceeding weight limit
-print("Total recursive calls:", num_calls)  # Number of DFS calls made
+# Output the maximum value found and the number of DFS calls made
+print(max_value)
+print(call_count)
