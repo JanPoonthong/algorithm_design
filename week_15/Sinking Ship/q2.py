@@ -7,8 +7,6 @@ for line in stdin:
     x = line.split()
     data.append(x)
 
-print(data)
-
 from simplePriorityQueue import Simple_Priority_Queue
 
 
