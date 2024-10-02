@@ -4,6 +4,7 @@ M = 3
 
 import copy
 
+
 class ColoringState:
     def __init__(self, size):
         self.colors = [-1] * size
@@ -26,15 +27,17 @@ def create_adjacency_matrix(V, edges):
 
     return matrix
 
+
 def generate_successors(state, graph, M):
     successors = []
-    for color in range(1, M+1):
+    for color in range(1, M + 1):
         if is_valid(state.colors, state.current_vertex, color, graph):
             new_state = copy.deepcopy(state)
             new_state.colors[new_state.current_vertex] = color
             new_state.current_vertex += 1
             successors.append(new_state)
     return successors
+
 
 graph = create_adjacency_matrix(V, edges)
 
@@ -58,6 +61,7 @@ def print_solution(colors):
             print(f"Vertex {vertex}: Color {colors[vertex]}")
     else:
         print("No solution exists.")
+
 
 # Print the solution
 if solution_state:

@@ -11,6 +11,7 @@ for r in range(rows):
 
 import copy
 
+
 class MazeState:
     def __init__(self):
         self.row = start_row
@@ -23,7 +24,9 @@ def is_valid(r, c):
         return True
     return False
 
+
 adj = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+
 
 def generate_successors(current_state):
     successors = []
@@ -41,8 +44,9 @@ def generate_successors(current_state):
             maze[new_row][new_col] = new_state.step
 
             successors.append(new_state)
-    
+
     return successors
+
 
 queue = []
 initial_state = MazeState()
@@ -57,8 +61,10 @@ while queue:
     for successor_state in generate_successors(current_state):
         queue.append(successor_state)
 
+
 def print_solution(solution_state):
     print(solution_state.step)
+
 
 # Print the solution
 if solution_state:

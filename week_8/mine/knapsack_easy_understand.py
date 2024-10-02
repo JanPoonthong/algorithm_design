@@ -1,9 +1,7 @@
 import time
 
 # Input values
-N, M = map(
-    int, input("Enter the number of items and the knapsack capacity: ").split()
-)
+N, M = map(int, input("Enter the number of items and the knapsack capacity: ").split())
 weights = list(map(int, input("Enter the weights of the items: ").split()))
 values = list(map(int, input("Enter the values of the items: ").split()))
 

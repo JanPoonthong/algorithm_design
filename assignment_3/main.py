@@ -15,9 +15,11 @@ p = []
 for i in range(d):
     p += list(map(int, input().split()))
 
+
 # Helper function to check if a move is within bounds
 def valid(i, j):
     return 0 <= i < d and 0 <= j < d
+
 
 # State class to store puzzle configuration, number of moves (g), and heuristic (h)
 class state:
@@ -25,6 +27,7 @@ class state:
         self.p = copy.deepcopy(p)  # Puzzle configuration
         self.g = 0  # Number of moves made so far
         self.h = 1000000000  # Heuristic value (Manhattan distance)
+
 
 # Manhattan distance heuristic function
 def manhattan(p):
@@ -37,6 +40,7 @@ def manhattan(p):
             current_col = i % d
             h += abs(target_row - current_row) + abs(target_col - current_col)
     return h
+
 
 # Generate successor states by moving the empty space (0)
 def successor(s):
@@ -62,6 +66,7 @@ def successor(s):
             succ.append(u)
     return succ
 
+
 # Depth-First Search with pruning (limited by atMost)
 def DFS(s, atMost):
     global count, found
@@ -80,6 +85,7 @@ def DFS(s, atMost):
                 break
         return atLeast
 
+
 # Iterative Deepening A* algorithm
 def IDAstar(s):
     global found
@@ -89,6 +95,7 @@ def IDAstar(s):
     while not found:
         atMost = DFS(s, atMost)
     return atMost
+
 
 # Initialize the search state
 count = 0

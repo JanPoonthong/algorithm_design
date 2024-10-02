@@ -16,9 +16,7 @@ for line in stdin:
     v = int(x[1])  # Neighboring city
     w = int(x[2])  # Distance/weight between cities
     adj[u].append((v, w))  # Add edge (v, w) to city u's adjacency list
-    adj[v].append(
-        (u, w)
-    )  # Add edge (u, w) to city v's adjacency list (because the graph is undirected)
+    adj[v].append((u, w))  # Add edge (u, w) to city v's adjacency list (because the graph is undirected)
 
 from simplePriorityQueue import Simple_Priority_Queue
 
@@ -44,9 +42,7 @@ def successor(s):
         # If a shorter path to v is found, update the shortest path and add to successors
         if s.d + w < shortest[v]:
             shortest[v] = s.d + w
-            succ.append(
-                State(v, s.d + w)
-            )  # Add the new state to the successor list
+            succ.append(State(v, s.d + w))  # Add the new state to the successor list
 
     return succ  # Return all valid successors
 
@@ -61,9 +57,7 @@ def cityCompare(x, y):
 
 
 # Uniform Cost Search (UCS) starts here
-pq = Simple_Priority_Queue(
-    cityCompare
-)  # Priority queue to store states (city, distance)
+pq = Simple_Priority_Queue(cityCompare)  # Priority queue to store states (city, distance)
 start_state = State(0, 0)  # Start from city 0 with a distance of 0
 
 # While the goal city (V-1) is not reached

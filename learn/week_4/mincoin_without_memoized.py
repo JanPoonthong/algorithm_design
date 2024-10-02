@@ -18,9 +18,7 @@ def minimum_coin_change():
 
         for c in coin_denominator:
             if c <= amount_of_change:
-                minimum_coin_need = min(
-                    minimum_coin_need, calculate(amount_of_change - c) + 1
-                )
+                minimum_coin_need = min(minimum_coin_need, calculate(amount_of_change - c) + 1)
 
         return minimum_coin_need
 

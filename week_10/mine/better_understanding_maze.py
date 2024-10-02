@@ -14,9 +14,7 @@ dest_row, dest_col = map(int, input().split())
 for r in range(rows):
     row_input = list(map(int, input().split()))  # Input row by row
     for c in range(cols):
-        maze[r][c] = -row_input[
-            c
-        ]  # Negative value for walls (easier to distinguish)
+        maze[r][c] = -row_input[c]  # Negative value for walls (easier to distinguish)
 
 
 # Function to check if the next position is valid to move into (inside bounds and not a wall)
@@ -73,9 +71,7 @@ queue.append(start_state)
 while queue:
     current_state = queue.pop(0)  # Dequeue the first state
 
-    if is_goal(
-        current_state
-    ):  # If the goal is reached, print the number of steps and exit
+    if is_goal(current_state):  # If the goal is reached, print the number of steps and exit
         print(current_state.steps)
         break
 

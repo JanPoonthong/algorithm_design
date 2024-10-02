@@ -6,6 +6,7 @@ for _ in range(E):
     V1, V2, W = map(int, input().split())
     edges.append((V1, V2, W))
 
+
 def getKey(x):
     return x[2]
 

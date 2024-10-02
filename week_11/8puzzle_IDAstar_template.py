@@ -12,7 +12,7 @@ import copy
 
 
 def valid(i, j):
-    global d    
+    global d
 
     if i >= 0 and i < d and j >= 0 and j < d:
         return True

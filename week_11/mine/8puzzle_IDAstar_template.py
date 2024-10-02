@@ -26,9 +26,7 @@ class State:
     def __init__(self, puzzle):
         self.puzzle = copy.deepcopy(puzzle)  # Puzzle configuration (deep copy)
         self.g = 0  # Cost from the start state to the current state
-        self.h = float(
-            "inf"
-        )  # Heuristic value, initially set to a large number
+        self.h = float("inf")  # Heuristic value, initially set to a large number
 
 
 # Calculate the Manhattan distance as the heuristic (lower bound on moves required)
@@ -72,9 +70,7 @@ def get_successors(current_state):
             # Create a new state and update its cost and heuristic
             new_state = State(new_puzzle)
             new_state.g = current_state.g + 1  # Increase the cost
-            new_state.h = calculate_manhattan(
-                new_puzzle
-            )  # Calculate the heuristic
+            new_state.h = calculate_manhattan(new_puzzle)  # Calculate the heuristic
             successors.append(new_state)
 
     return successors
@@ -95,9 +91,7 @@ def DFS(current_state, max_cost):
 
     # Otherwise, keep searching for a solution
     count += 1
-    min_cost_exceeded = float(
-        "inf"
-    )  # Minimum cost that exceeded the current limit
+    min_cost_exceeded = float("inf")  # Minimum cost that exceeded the current limit
 
     # Explore all successor states
     for successor in get_successors(current_state):

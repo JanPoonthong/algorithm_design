@@ -27,9 +27,7 @@ def hepler():
         # Option 2: Include the current packet if it is not -1
         option2 = 100000000
         if packets[index] != -1 and current_weight + index + 1 <= k:
-            option2 = brute_force(
-                index, current_weight + index + 1, current_cost + packets[index]
-            )
+            option2 = brute_force(index, current_weight + index + 1, current_cost + packets[index])
 
         memo[(n, k)] = min(option1, option2)
         return memo[(n, k)]

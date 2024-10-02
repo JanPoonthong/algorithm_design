@@ -7,10 +7,7 @@ def dynamic_edit_distance():
     first_word = "FOOD"
     second_word = "MONEY"
 
-    dp = [
-        [float("inf")] * (len(second_word) + 1)
-        for _ in range(len(first_word) + 1)
-    ]
+    dp = [[float("inf")] * (len(second_word) + 1) for _ in range(len(first_word) + 1)]
 
     def calculate():
         for i in range(len(dp)):
@@ -25,9 +22,7 @@ def dynamic_edit_distance():
                 if first_word[i - 1] == second_word[j - 1]:
                     dp[i][j] = dp[i - 1][j - 1]
                 else:
-                    dp[i][j] = 1 + min(
-                        dp[i][j - 1], dp[i - 1][j], dp[i - 1][j - 1]
-                    )
+                    dp[i][j] = 1 + min(dp[i][j - 1], dp[i - 1][j], dp[i - 1][j - 1])
 
         return dp[len(dp) - 1][len(dp[0]) - 1]
 

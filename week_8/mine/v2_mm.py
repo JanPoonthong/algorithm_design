@@ -24,14 +24,10 @@ def knapsack(i, remaining_capacity):
     # Option 2: Include the current item (if it fits)
     max_value_with_item = 0
     if weights[i] <= remaining_capacity:
-        max_value_with_item = values[i] + knapsack(
-            i + 1, remaining_capacity - weights[i]
-        )
+        max_value_with_item = values[i] + knapsack(i + 1, remaining_capacity - weights[i])
 
     # Store the maximum value obtained in the memoization table
-    memo[i][remaining_capacity] = max(
-        max_value_without_item, max_value_with_item
-    )
+    memo[i][remaining_capacity] = max(max_value_without_item, max_value_with_item)
 
     return memo[i][remaining_capacity]
 

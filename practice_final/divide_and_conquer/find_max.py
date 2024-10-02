@@ -1,12 +1,13 @@
 numbers = [9, 6, 4, 7, 10, 14, 8, 11]
 
+
 def find_max(numbers, low, high):
     if low > high:
         return float("-inf")
-    
+
     if low == high:
         return numbers[low]
-    
+
     mid = (low + high) // 2
 
     left = numbers[:mid]
