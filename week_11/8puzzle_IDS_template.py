@@ -77,6 +77,7 @@ def DFS(s, maxDepth):
 
 def IDS(s):  # Iterative Deepening Search
     # Complete this function (which utilizes DFS)
+    # Increase limit each time we don't find the goal note
     limit = 0
     x = DFS(s, limit)
     while x == -1:
